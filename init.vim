@@ -1,0 +1,1 @@
+/home/aespinal/.config/nvim/init.vim
