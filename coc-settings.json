@@ -1,1 +1,41 @@
-/home/aespinal/.config/nvim/coc-settings.json
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "html",
+    "javascript",
+    "json",
+    "scss",
+    "typescript",
+    "vim",
+    "vue",
+    "xml",
+    "yaml"
+  ],
+
+  // Eslint
+  "eslint.autoFixOnSave": true,
+  "eslint.packageManager": "npm",
+  "workspace.bottomUpFiletypes": ["javascript", "typescript"],
+  "workspace.workspaceFolderCheckCwd": false,
+
+  // Vetur
+  "vetur.validation.style": false,
+  "vetur.format.enable": true,
+
+  // CSS
+  "css.validate": true,
+  "scss.validate": true,
+
+  // Typescript/Javascript
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.validate.enable": true,
+  "javascript.suggest.enabled": true,
+  "javascript.suggest.autoImports": true,
+  "javascript.suggestionActions.enabled": true,
+  "tsserver.log": "verbose",
+  "tsserver.maxTsServerMemory": 2048,
+  "tsserver.disableAutomaticTypeAcquisition": false,
+  "tsserver.useBatchedBufferSync": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.workspaceSymbols.scope": "currentProject"
+}
