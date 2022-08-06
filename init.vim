@@ -3,18 +3,18 @@
 " filetype plugin indent on
 
 " Install vim plug and plugins if vim plug is not already installed
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+" if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+"    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
+"                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" endif
 
-call plug#begin()
+call plug#begin('~\AppData\Local\nvim\plugged')
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'gruvbox-community/gruvbox'
+Plug 'sainnhe/everforest'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 
@@ -22,7 +22,7 @@ call plug#end()
 " }}}
 
 " Options: {{{
-colorscheme gruvbox
+colorscheme everforest 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 set fileencoding=UTF-8
@@ -35,8 +35,7 @@ set nu
 set nohlsearch
 set hidden
 set noerrorbells
-set tabstop=4 softtabstop=4 shiftwidth=2 expandtab smarttab
-set shiftwidth=4
+set tabstop=4 softtabstop=4 shiftwidth=4 expandtab smarttab
 set expandtab
 set smartindent
 set nowrap
@@ -97,7 +96,8 @@ let g:coc_global_extensions = [
             \ "coc-vetur",
             \ "coc-vimlsp",
             \ "coc-xml",
-            \ "coc-yaml"
+            \ "coc-yaml",
+            \ "coc-rust-analyzer"
             \]
 
 " Keybinds that makes my CoC slick

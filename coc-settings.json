@@ -6,6 +6,7 @@
     "json",
     "scss",
     "typescript",
+    "typescriptreact",
     "vim",
     "vue",
     "xml",
@@ -13,7 +14,7 @@
   ],
 
   // Eslint
-  "eslint.autoFixOnSave": true,
+  "eslint.autoFixOnSave": false,
   "eslint.packageManager": "npm",
   "workspace.bottomUpFiletypes": ["javascript", "typescript"],
   "workspace.workspaceFolderCheckCwd": false,
