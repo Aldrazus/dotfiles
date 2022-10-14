@@ -9,7 +9,7 @@
 "    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 " endif
 
-call plug#begin('~\AppData\Local\nvim\plugged')
+call plug#begin()
 
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
