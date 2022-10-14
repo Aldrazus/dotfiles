@@ -22,6 +22,7 @@ call plug#end()
 " }}}
 
 " Options: {{{
+let g:everforest_transparent_background = 1
 colorscheme everforest 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
