@@ -102,7 +102,8 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " TODO: move to separate file
 lua << EOF
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "javascript", "typescript", "rust", "json", "lua", "haskell", "comment" },
+  ensure_installed = { "javascript", "typescript", "rust", "json", "lua", "haskell", "comment", "vim" },
+  highlight = { enable = true },
 }
 
 -- makes sure the language servers configured later with lspconfig are
