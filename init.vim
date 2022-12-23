@@ -14,7 +14,7 @@ call plug#begin()
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'sainnhe/everforest'
+Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
 
 " LSP stuff
@@ -35,8 +35,7 @@ call plug#end()
 " }}}
 
 " Options: {{{
-let g:everforest_transparent_background = 1
-colorscheme everforest 
+colorscheme onedark
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 set fileencoding=UTF-8
@@ -101,8 +100,10 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Lua bullshit
 " TODO: move to separate file
 lua << EOF
+vim.filetype.add({extension = {wgsl = "wgsl"}})
+
 require('nvim-treesitter.configs').setup {
-  ensure_installed = { "javascript", "typescript", "rust", "json", "lua", "haskell", "comment", "vim" },
+  ensure_installed = { "javascript", "typescript", "rust", "json", "lua", "haskell", "comment", "vim", "wgsl" },
   highlight = { enable = true },
 }
 
