@@ -10,6 +10,7 @@ lsp.ensure_installed({
     'eslint',
     'lua_ls',
     'rust_analyzer',
+    'volar'
 })
 
 lsp.set_preferences({
