@@ -11,6 +11,10 @@
 
 call plug#begin()
 
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
 Plug 'joshdick/onedark.vim'
 Plug 'tpope/vim-fugitive'
 
@@ -92,6 +96,12 @@ autocmd FileType json syntax match Comment +\/\*.\+\*\/$+
 highlight Normal guibg=none
 " }}}
 
+" Mappings for Telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Lightline config
 let g:lightline = {
@@ -113,9 +123,16 @@ endfunction
 " rip my grep a new one
 " God bless this person: https://github.com/BurntSushi/ripgrep/issues/425#issuecomment-381446152
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-nnoremap <Leader>g :silent lgrep<Space>
+nnoremap <Leader>rg :silent lgrep<Space>
 nnoremap <silent> [f :lprevious<CR>
 nnoremap <silent> ]f :lnext<CR>
+
+" netrw
+let g:netrw_banner = 0
+let g:netrw_list_hide = '^\.\.\?/$'
+let g:netrw_liststyle = 0
+let g:netrw_sort_sequence = '[\/]$'
+let g:netrw_use_errorwindow = 0
 
 
 
@@ -125,8 +142,6 @@ nnoremap <silent> ]f :lnext<CR>
 " Lua bullshit
 " TODO: move to separate file
 lua << EOF
-vim.filetype.add({extension = {wgsl = "wgsl"}})
-
 -- Configure Treesitter
 require('nvim-treesitter.configs').setup {
   ensure_installed = { "javascript", "typescript", "rust", "json", "haskell", "help", "comment", "vim", "lua" },
@@ -176,9 +191,6 @@ end
 -- See https://github.com/simrat39/rust-tools.nvim#configuration
 local opts = {
   tools = {
-    runnables = {
-      use_telescope = true,
-    },
     inlay_hints = {
       auto = true,
       show_parameter_hints = false,
