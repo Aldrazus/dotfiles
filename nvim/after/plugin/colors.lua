@@ -1,9 +1,7 @@
-require("tokyonight").setup({
-    style = "storm",
-    transparent = true,
-    styles = {
-        floats = "transparent"
-    }
+local onedark = require('onedark')
+onedark.setup({
+    style = 'dark',
+    transparent = true
 })
 
-vim.cmd[[colorscheme tokyonight]]
+onedark.load()

@@ -11,9 +11,6 @@ local function get_home_dir()
     return os.getenv('HOME') or '.'
 end
 
-vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', {noremap = true, silent = true})
-vim.g.mapleader = ' '
-
 vim.opt.fileencoding = 'UTF-8'
 vim.opt.encoding = 'UTF-8'
 
@@ -51,3 +48,7 @@ vim.opt.inccommand = 'split'
 vim.opt.cmdheight = 2
 vim.opt.shortmess:append('c')
 vim.cmd('syntax on')
+
+if vim.fn.executable('rg') == 1 then
+    vim.opt.grepprg="rg --vimgrep --no-heading --smart-case"
+end

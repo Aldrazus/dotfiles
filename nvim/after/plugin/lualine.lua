@@ -1,3 +1,7 @@
+local codicons = require('codicons')
+codicons.setup({})
+
+-- TODO: extend this
 require('lualine').setup {
   options = {
     icons_enabled = true,
