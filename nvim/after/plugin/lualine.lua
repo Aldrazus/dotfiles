@@ -10,10 +10,8 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', {'fileformat', symbols = {
-        unix = 'unix', dos = 'dos', mac = 'mac'
-    }}, 'filetype'},
+    lualine_c = {'buffers'},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
     lualine_y = {'progress'},
     lualine_z = {'location'}
   },
