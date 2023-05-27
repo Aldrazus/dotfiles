@@ -47,6 +47,7 @@ vim.opt.showtabline = 1
 vim.opt.inccommand = 'split'
 vim.opt.cmdheight = 2
 vim.opt.shortmess:append('c')
+vim.opt.keywordprg = ':help'
 vim.cmd('syntax on')
 
 if vim.fn.executable('rg') == 1 then

@@ -1,9 +1,8 @@
-local lsp = require('lsp-zero').preset({
-  name = 'minimal',
-  set_lsp_keymaps = true,
-  manage_nvim_cmp = true,
-  suggest_lsp_servers = false,
-})
+local lsp = require('lsp-zero').preset({})
+
+lsp.on_attach(function(_, bufnr)
+    lsp.default_keymaps({buffer = bufnr})
+end)
 
 lsp.ensure_installed({
     'tsserver',
@@ -11,14 +10,28 @@ lsp.ensure_installed({
     'lua_ls',
     'rust_analyzer',
     'volar',
+    'pyright',
+    'denols'
 })
 
-lsp.set_preferences({
-    sign_icons = { }
-})
+lsp.set_sign_icons({})
+
+local nvim_lsp = require('lspconfig')
 
 -- (Optional) Configure lua language server for neovim
-lsp.nvim_workspace()
+nvim_lsp.lua_ls.setup(lsp.nvim_lua_ls())
+
+-- Run denols only in deno projects 
+-- TODO: deno supports package.json, so...
+nvim_lsp.denols.setup {
+    root_dir = nvim_lsp.util.root_pattern('deno.json', 'deno.jsonc'),
+}
+
+-- Run tsserver only in node projects
+nvim_lsp.tsserver.setup {
+    root_dir = nvim_lsp.util.root_pattern('package.json'),
+    single_file_support = false
+}
 
 lsp.setup()
 
