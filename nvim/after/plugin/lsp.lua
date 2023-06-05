@@ -11,7 +11,8 @@ lsp.ensure_installed({
     'rust_analyzer',
     'volar',
     'pyright',
-    'denols'
+    'denols',
+    'clangd'
 })
 
 lsp.set_sign_icons({})
@@ -34,6 +35,18 @@ nvim_lsp.tsserver.setup {
 }
 
 lsp.setup()
+
+local cmp = require('cmp')
+
+cmp.setup {
+    preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert'
+    },
+    mapping = {
+        ['<CR>'] = cmp.mapping.confirm {select = false },
+    }
+}
 
 local rust_tools = require('rust-tools')
 -- initialize rust_analyzer with rust-tools
