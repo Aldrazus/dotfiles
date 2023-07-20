@@ -52,4 +52,10 @@ return require('packer').startup(function(use)
   use 'nvim-lua/plenary.nvim'
   use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
+  -- autopair
+  use {
+      "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+  }
+
 end)
