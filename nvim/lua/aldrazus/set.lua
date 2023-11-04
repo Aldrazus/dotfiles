@@ -48,7 +48,17 @@ vim.opt.inccommand = 'split'
 vim.opt.cmdheight = 2
 vim.opt.shortmess:append('c')
 vim.opt.keywordprg = ':help'
+
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 vim.cmd('syntax on')
+
+-- Set filetype for shaders
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = {"*.vert", "*.frag"},
+  command = "setfiletype glsl",
+})
 
 if vim.fn.executable('rg') == 1 then
     vim.opt.grepprg="rg --vimgrep --no-heading --smart-case"
