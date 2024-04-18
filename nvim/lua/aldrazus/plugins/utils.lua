@@ -2,8 +2,7 @@ return {
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
 
-    -- Useful plugin to show you pending keybinds.
-    { 'folke/which-key.nvim',  opts = {} },
+    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
     {
         -- Theme inspired by Atom
@@ -74,12 +73,6 @@ return {
             'nvim-treesitter/nvim-treesitter-textobjects',
         },
         build = ':TSUpdate',
-    },
-
-    {
-        'nvim-tree/nvim-tree.lua',
-        lazy = false,
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
 
     {
