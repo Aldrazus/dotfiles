@@ -55,8 +55,17 @@ vim.g.loaded_netrwPlugin = 1
 vim.cmd('syntax on')
 
 -- Set filetype for shaders
+vim.filetype.add({
+    extension = {
+        vert = 'glsl',
+	frag = 'glsl',
+	vsh = 'glsl',
+	fsh = 'glsl'
+    }
+})
+
 vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = {"*.vert", "*.frag"},
+  pattern = {"*.vert", "*.frag", "*.vsh", "*.fsh"},
   command = "setfiletype glsl",
 })
 

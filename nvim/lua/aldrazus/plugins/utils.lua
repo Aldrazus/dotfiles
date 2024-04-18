@@ -78,7 +78,8 @@ return {
 
     {
         'nvim-tree/nvim-tree.lua',
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
+        lazy = false,
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
     },
 
     {
@@ -102,11 +103,11 @@ return {
         opts = function()
             local options = {
                 preview = {
-                    quit = "q",                       -- optional keymapping for quit preview
-                    accept = "<tab>",                 -- optional keymapping for accept preview
+                    quit = "q",                           -- optional keymapping for quit preview
+                    accept = "<tab>",                     -- optional keymapping for accept preview
                 },
-                header_extension = "h",               -- optional
-                source_extension = "cpp",             -- optional
+                header_extension = "h",                   -- optional
+                source_extension = "cpp",                 -- optional
                 custom_define_class_function_commands = { -- optional
                     TSCppImplWrite = {
                         output_handle = require("nt-cpp-tools.output_handlers").get_add_to_cpp(),
