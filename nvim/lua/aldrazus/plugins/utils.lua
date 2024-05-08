@@ -5,17 +5,13 @@ return {
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
 
     {
-        -- Theme inspired by Atom
-        'navarasu/onedark.nvim',
-        priority = 1000,
-        lazy = false,
+        'Mofiqul/vscode.nvim',
         config = function()
-            require('onedark').setup {
-                -- Set a style preset. 'dark' is default.
-                style = 'dark', -- dark, darker, cool, deep, warm, warmer, light
-                transparent = true
+            require('vscode').setup {
+                transparent = false,
+                style = 'dark'
             }
-            require('onedark').load()
+            require('vscode').load()
         end,
     },
 
