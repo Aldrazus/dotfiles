@@ -12,6 +12,7 @@ return {
             { 'j-hui/fidget.nvim', opts = {} },
 
             -- Additional lua configuration, makes nvim stuff amazing!
+            -- TODO: replace with lazydev: https://github.com/folke/lazydev.nvim
             'folke/neodev.nvim',
         },
     },
