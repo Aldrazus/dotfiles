@@ -88,6 +88,17 @@ mason_lspconfig.setup_handlers {
       filetypes = (servers[server_name] or {}).filetypes,
     }
   end,
+  ['clangd'] = function ()
+    require('lspconfig').clangd.setup{
+      capabilities = capabilities,
+      on_attach = on_attach,
+      cmd = {
+        'clangd',
+        '--background-index',
+        '--clang-tidy'
+      }
+    }
+  end
 }
 
 local cmp = require 'cmp'
