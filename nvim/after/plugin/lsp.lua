@@ -54,7 +54,7 @@ require('mason-lspconfig').setup()
 local servers = {
   clangd = {},
   pyright = {},
-  tsserver = {},
+  ts_ls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
