@@ -48,6 +48,11 @@ vim.opt.inccommand = 'split'
 vim.opt.cmdheight = 2
 vim.opt.shortmess:append('c')
 vim.opt.keywordprg = ':help'
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevel = 99
+vim.opt.foldnestmax = 8
+vim.opt.foldcolumn = "0"
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

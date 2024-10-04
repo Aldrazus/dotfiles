@@ -8,7 +8,7 @@ return {
         'Mofiqul/vscode.nvim',
         config = function()
             require('vscode').setup {
-                transparent = false,
+                transparent = true,
                 style = 'dark'
             }
             require('vscode').load()
