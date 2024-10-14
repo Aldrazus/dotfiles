@@ -63,24 +63,22 @@ return {
     },
 
     {
-        -- Highlight, edit, and navigate code
         'nvim-treesitter/nvim-treesitter',
-        dependencies = {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-        },
+        event = { "BufReadPost", "BufNewFile" },
         build = ':TSUpdate',
+        opts = function()
+            return require("config.treesitter")
+        end,
+        config = function(_, opts)
+            require("nvim-treesitter.configs").setup(opts)
+        end
     },
 
     {
         'nvim-lualine/lualine.nvim',
-        ops = {
-            options = {
-                icons_enabled = false,
-                theme = 'auto',
-                component_separators = '|',
-                section_separators = '',
-            }
-        }
+        opts = function()
+            require("config.lualine")
+        end
     },
 
     'windwp/nvim-autopairs',
