@@ -1,19 +1,24 @@
 return {
+    {
+        "catppuccin/nvim",
+        name = "catppuccin",
+        lazy = false,
+        priority = 1000,
+        opts = {
+            transparent_background = true,
+            flavour = "mocha"
+        },
+        config = function(_, opts)
+            require("catppuccin").setup(opts)
+            vim.cmd([[colorscheme catppuccin]])
+        end
+
+    },
+
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
 
     { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
-
-    {
-        'Mofiqul/vscode.nvim',
-        config = function()
-            require('vscode').setup {
-                transparent = true,
-                style = 'dark'
-            }
-            require('vscode').load()
-        end,
-    },
 
     {
         -- Set lualine as statusline
