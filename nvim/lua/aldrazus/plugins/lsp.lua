@@ -7,19 +7,36 @@ return {
             { 'williamboman/mason.nvim', config = true },
             'williamboman/mason-lspconfig.nvim',
 
-            -- Useful status updates for LSP
             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
             { 'j-hui/fidget.nvim', opts = {} },
-
-            -- Additional lua configuration, makes nvim stuff amazing!
-            -- TODO: replace with lazydev: https://github.com/folke/lazydev.nvim
-            'folke/neodev.nvim',
         },
+    },
+
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
+        opts = {
+            library = {
+                { path = "luvit-meta/library", words = { "vim%.uv" } },
+            },
+        },
+    },
+
+    {
+        "Bilal2453/luvit-meta",
+        lazy = true
     },
 
     {
         -- Autocompletion
         'hrsh7th/nvim-cmp',
+        opts = function(_, opts)
+            opts.sources = opts.sources or {}
+            table.insert(opts.sources, {
+                name = "lazydev",
+                group_index = 0
+            })
+        end,
         dependencies = {
             -- Snippet Engine & its associated nvim-cmp source
             {
@@ -42,7 +59,6 @@ return {
             },
             'saadparwaiz1/cmp_luasnip',
             'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-path',
         },
     },
 }
