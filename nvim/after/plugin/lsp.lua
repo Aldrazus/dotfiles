@@ -92,7 +92,8 @@ mason_lspconfig.setup_handlers {
       cmd = {
         'clangd',
         '--background-index',
-        '--clang-tidy'
+        '--clang-tidy',
+        '--header-insertion=never'
       }
     }
   end
