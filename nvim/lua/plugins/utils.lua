@@ -15,6 +15,13 @@ return {
 
     },
 
+    -- Autopairs
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
+
     -- Detect tabstop and shiftwidth automatically
     'tpope/vim-sleuth',
 
