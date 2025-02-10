@@ -83,7 +83,11 @@ return {
         end
     },
 
-    'windwp/nvim-autopairs',
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+    },
 
     {
         "Badhi/nvim-treesitter-cpp-tools",
