@@ -1,17 +1,43 @@
 return {
     {
-        -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
         dependencies = {
-            -- Automatically install LSPs to stdpath for neovim
-            { 'williamboman/mason.nvim', config = true },
-            'williamboman/mason-lspconfig.nvim',
-
             -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-            { 'j-hui/fidget.nvim', opts = {} },
+            { 'j-hui/fidget.nvim',       opts = {} },
         },
     },
-
+    { 'williamboman/mason.nvim', config = true },
+    {
+        'williamboman/mason-lspconfig.nvim',
+        dependencies = {
+            "mason.nvim",
+            "nvim-lspconfig",
+            "blink.cmp"
+        },
+        config = function ()
+            require("mason-lspconfig").setup({
+                ensure_installed = {"clangd", "lua_ls"}
+            })
+            require("mason-lspconfig").setup_handlers({
+                function (server_name)
+                    local capabilities = require("blink.cmp").get_lsp_capabilities()
+                    require("lspconfig")[server_name].setup({capabilities = capabilities})
+                end,
+                ["clangd"] = function()
+                    local capabilities = require("blink.cmp").get_lsp_capabilities()
+                    require("lspconfig").clangd.setup({
+                        capabilities = capabilities,
+                        cmd = {
+                            "clangd",
+                            "--background-index",
+                            "--clang-tidy",
+                            "--header-insertion=never"
+                        }
+                    })
+                end
+            })
+        end
+    },
     {
         "folke/lazydev.nvim",
         ft = "lua",
@@ -26,39 +52,21 @@ return {
         "Bilal2453/luvit-meta",
         lazy = true
     },
-
     {
-        -- Autocompletion
-        'hrsh7th/nvim-cmp',
-        opts = function(_, opts)
-            opts.sources = opts.sources or {}
-            table.insert(opts.sources, {
-                name = "lazydev",
-                group_index = 0
-            })
-        end,
-        dependencies = {
-            -- Snippet Engine & its associated nvim-cmp source
-            {
-                'L3MON4D3/LuaSnip',
-                build = (function()
-                    -- Build Step is needed for regex support in snippets
-                    -- This step is not supported in many windows environments
-                    -- Remove the below condition to re-enable on windows
-                    if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
-                        return
-                    end
-                    return 'make install_jsregexp'
-                end)(),
-                dependencies = {
-                    'rafamadriz/friendly-snippets',
-                    config = function()
-                        require('luasnip.loaders.from_vscode').lazy_load()
-                    end,
-                }
+        "saghen/blink.cmp",
+        dependencies = "rafamadriz/friendly-snippets",
+        version = "*",
+        opts = {
+            keymap = { preset = "default" },
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = "mono"
             },
-            'saadparwaiz1/cmp_luasnip',
-            'hrsh7th/cmp-nvim-lsp',
+            sources = {
+                default = { "lsp", "path", "snippets", "buffer"}
+            },
         },
+
+        opts_extend = { "sources.default" }
     },
 }
