@@ -1,122 +1,122 @@
 return {
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		lazy = false,
-		priority = 1000,
-		opts = {
-			transparent_background = true,
-			flavour = "mocha",
-		},
-		config = function(_, opts)
-			require("catppuccin").setup(opts)
-			vim.cmd([[colorscheme catppuccin]])
-		end,
-	},
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_background = true,
+      flavour = "mocha",
+    },
+    config = function(_, opts)
+      require("catppuccin").setup(opts)
+      vim.cmd([[colorscheme catppuccin]])
+    end,
+  },
 
-	-- Autopairs
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-	},
+  -- Autopairs
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
 
-	-- Detect tabstop and shiftwidth automatically
-	"tpope/vim-sleuth",
+  -- Detect tabstop and shiftwidth automatically
+  "tpope/vim-sleuth",
 
-	{
-		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
-	},
+  {
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { signs = false },
+  },
 
-	{
-		-- Set lualine as statusline
-		"nvim-lualine/lualine.nvim",
-		-- See `:help lualine.txt`
-		opts = {
-			options = {
-				icons_enabled = false,
-				theme = "auto",
-				component_separators = "|",
-				section_separators = "",
-			},
-		},
-	},
+  {
+    -- Set lualine as statusline
+    "nvim-lualine/lualine.nvim",
+    -- See `:help lualine.txt`
+    opts = {
+      options = {
+        icons_enabled = false,
+        theme = "auto",
+        component_separators = "|",
+        section_separators = "",
+      },
+    },
+  },
 
-	{
-		-- Add indentation guides even on blank lines
-		"lukas-reineke/indent-blankline.nvim",
-		-- Enable `lukas-reineke/indent-blankline.nvim`
-		-- See `:help ibl`
-		main = "ibl",
-		opts = {},
-	},
+  {
+    -- Add indentation guides even on blank lines
+    "lukas-reineke/indent-blankline.nvim",
+    -- Enable `lukas-reineke/indent-blankline.nvim`
+    -- See `:help ibl`
+    main = "ibl",
+    opts = {},
+  },
 
-	-- "gc" to comment visual regions/lines
-	{ "numToStr/Comment.nvim", opts = {} },
+  -- "gc" to comment visual regions/lines
+  { "numToStr/Comment.nvim", opts = {} },
 
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		opts = {
-			defaults = {
-				mappings = {
-					i = {
-						["<C-u>"] = false,
-						["<C-d>"] = false,
-					},
-				},
-			},
-		},
-	},
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      defaults = {
+        mappings = {
+          i = {
+            ["<C-u>"] = false,
+            ["<C-d>"] = false,
+          },
+        },
+      },
+    },
+  },
 
-	{
-		"nvim-treesitter/nvim-treesitter",
-		event = { "BufReadPost", "BufNewFile" },
-		build = ":TSUpdate",
-		opts = function()
-			return require("config.treesitter")
-		end,
-		config = function(_, opts)
-			require("nvim-treesitter.configs").setup(opts)
-		end,
-	},
+  {
+    "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
+    build = ":TSUpdate",
+    opts = function()
+      return require("config.treesitter")
+    end,
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+    end,
+  },
 
-	{
-		"nvim-lualine/lualine.nvim",
-		opts = function()
-			require("config.lualine")
-		end,
-	},
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function()
+      require("config.lualine")
+    end,
+  },
 
-	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
-		config = true,
-	},
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = true,
+  },
 
-	{
-		"Badhi/nvim-treesitter-cpp-tools",
-		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		-- Optional: Configuration
-		opts = function()
-			local options = {
-				preview = {
-					quit = "q", -- optional keymapping for quit preview
-					accept = "<tab>", -- optional keymapping for accept preview
-				},
-				header_extension = "h", -- optional
-				source_extension = "cpp", -- optional
-				custom_define_class_function_commands = { -- optional
-					TSCppImplWrite = {
-						output_handle = require("nt-cpp-tools.output_handlers").get_add_to_cpp(),
-					},
-					--[[
+  {
+    "Badhi/nvim-treesitter-cpp-tools",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    -- Optional: Configuration
+    opts = function()
+      local options = {
+        preview = {
+          quit = "q", -- optional keymapping for quit preview
+          accept = "<tab>", -- optional keymapping for accept preview
+        },
+        header_extension = "h", -- optional
+        source_extension = "cpp", -- optional
+        custom_define_class_function_commands = { -- optional
+          TSCppImplWrite = {
+            output_handle = require("nt-cpp-tools.output_handlers").get_add_to_cpp(),
+          },
+          --[[
                 <your impl function custom command name> = {
                     output_handle = function (str, context)
                         -- string contains the class implementation
@@ -124,18 +124,18 @@ return {
                     end
                 }
                 ]]
-				},
-			}
-			return options
-		end,
-		-- End configuration
-		config = true,
-	},
-	{
-		"folke/flash.nvim",
-		event = "VeryLazy",
-		---@type Flash.Config
-		opts = {},
+        },
+      }
+      return options
+    end,
+    -- End configuration
+    config = true,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
         -- stylua: ignore
         keys = {
             { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
@@ -145,31 +145,31 @@ return {
             { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
         }
 ,
-	},
+  },
 
-	{
-		"stevearc/oil.nvim",
-		---@module 'oil'
-		---@type oil.SetupOpts
-		opts = {
-			view_options = {
-				show_hidden = true,
-			},
-		},
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		lazy = false,
-	},
-	{
-		"stevearc/conform.nvim",
-		opts = {
-			formatters_by_ft = {
-				lua = { "stylua" },
-				javascript = { "prettierd" },
-			},
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_format = "fallback",
-			},
-		},
-	},
+  {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
+  },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { "prettierd" },
+      },
+      format_on_save = {
+        timeout_ms = 500,
+        lsp_format = "fallback",
+      },
+    },
+  },
 }

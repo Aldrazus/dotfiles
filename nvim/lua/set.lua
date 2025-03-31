@@ -1,18 +1,18 @@
 local function is_windows()
-    return package.config:sub(1, 1) == '\\'
+  return package.config:sub(1, 1) == "\\"
 end
 
 local function get_home_dir()
-    if is_windows() then
-        local drive = os.getenv('HOMEDRIVE') or 'C:'
-        return drive .. ( os.getenv('HOMEPATH') or '\\' )
-    end
+  if is_windows() then
+    local drive = os.getenv("HOMEDRIVE") or "C:"
+    return drive .. (os.getenv("HOMEPATH") or "\\")
+  end
 
-    return os.getenv('HOME') or '.'
+  return os.getenv("HOME") or "."
 end
 
-vim.opt.fileencoding = 'UTF-8'
-vim.opt.encoding = 'UTF-8'
+vim.opt.fileencoding = "UTF-8"
+vim.opt.encoding = "UTF-8"
 
 vim.opt.showmode = false
 vim.opt.relativenumber = true
@@ -38,16 +38,16 @@ vim.opt.hlsearch = false
 vim.opt.incsearch = true
 vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
-vim.opt.completeopt = 'menuone,noinsert,noselect'
-vim.opt.signcolumn = 'number'
+vim.opt.completeopt = "menuone,noinsert,noselect"
+vim.opt.signcolumn = "number"
 vim.opt.cmdheight = 2
 vim.opt.updatetime = 50
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 vim.opt.showtabline = 1
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 vim.opt.cmdheight = 2
-vim.opt.shortmess:append('c')
-vim.opt.keywordprg = ':help'
+vim.opt.shortmess:append("c")
+vim.opt.keywordprg = ":help"
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevel = 99
@@ -57,23 +57,23 @@ vim.opt.foldcolumn = "0"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.cmd('syntax on')
+vim.cmd("syntax on")
 
 -- Set filetype for shaders
 vim.filetype.add({
-    extension = {
-        vert = 'glsl',
-	frag = 'glsl',
-	vsh = 'glsl',
-	fsh = 'glsl'
-    }
+  extension = {
+    vert = "glsl",
+    frag = "glsl",
+    vsh = "glsl",
+    fsh = "glsl",
+  },
 })
 
-vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
-  pattern = {"*.vert", "*.frag", "*.vsh", "*.fsh"},
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "*.vert", "*.frag", "*.vsh", "*.fsh" },
   command = "setfiletype glsl",
 })
 
-if vim.fn.executable('rg') == 1 then
-    vim.opt.grepprg="rg --vimgrep --no-heading --smart-case"
+if vim.fn.executable("rg") == 1 then
+  vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 end
