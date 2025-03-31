@@ -47,31 +47,30 @@ return {
             },
         },
     },
+	{
+		"Bilal2453/luvit-meta",
+		lazy = true,
+	},
+	{
+		"saghen/blink.cmp",
+		dependencies = "rafamadriz/friendly-snippets",
+		version = "*",
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			keymap = { preset = "enter" },
+			appearance = {
+				use_nvim_cmp_as_default = true,
+				nerd_font_variant = "mono",
+			},
+			cmdline = {
+				enabled = false,
+			},
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+		},
 
-    {
-        "Bilal2453/luvit-meta",
-        lazy = true
-    },
-    {
-        "saghen/blink.cmp",
-        dependencies = "rafamadriz/friendly-snippets",
-        version = "*",
-        ---@module 'blink.cmp'
-        ---@type blink.cmp.Config
-        opts = {
-            keymap = { preset = "enter" },
-            appearance = {
-                use_nvim_cmp_as_default = true,
-                nerd_font_variant = "mono"
-            },
-            cmdline = {
-                enabled = false
-            },
-            sources = {
-                default = { "lsp", "path", "snippets", "buffer"}
-            },
-        },
-
-        opts_extend = { "sources.default" }
-    },
+		opts_extend = { "sources.default" },
+	},
 }
