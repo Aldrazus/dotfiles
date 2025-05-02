@@ -8,7 +8,8 @@ return {
     "typescript",
     "vimdoc",
     "vim",
-    "glsl",
+    "vue",
+    "glsl"
   },
 
   highlight = { enable = true },
