@@ -1,8 +1,6 @@
-local map = vim.keymap.set
+local function set_global_keymaps(client, bufnr)
+  local map = vim.keymap.set
 
-local M = {}
-
-M.on_attach = function(_, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
@@ -23,16 +21,35 @@ M.on_attach = function(_, bufnr)
     vim.lsp.buf.format()
   end, { desc = "Format current buffer with LSP" })
 
-  -- C++ stuff
-  map("n", "<leader>cs", ":ClangdSwitchSourceHeader<CR>", opts("[C]langd [S]witch Source Header"))
-
   map("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts("Add workspace folder"))
   map("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts("Remove workspace folder"))
   map("n", "<leader>wl", function()
     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
   end, opts("List workspace folders"))
+
+  -- C++ stuff
+  -- TODO: only do this when in C++ project
+  map("n", "<leader>cs", ":ClangdSwitchSourceHeader<CR>", opts("[C]langd [S]witch Source Header"))
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('global.lsp', {}),
+  callback = function(args)
+    local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
+    local bufnr = args.buf
 
-return M
+    set_global_keymaps(client, bufnr)
+  end
+})
+
+vim.lsp.config("*", {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
+})
+
+--[[
+  The filetypes are configured for vtsls here instead of in vtsls.lua 
+  because another vim.lsp.config takes precedence over the vtsls.lua configuration.
+--]]
+vim.lsp.config('vtsls', {
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+})

@@ -107,11 +107,11 @@ return {
     opts = function()
       local options = {
         preview = {
-          quit = "q", -- optional keymapping for quit preview
-          accept = "<tab>", -- optional keymapping for accept preview
+          quit = "q",                             -- optional keymapping for quit preview
+          accept = "<tab>",                       -- optional keymapping for accept preview
         },
-        header_extension = "h", -- optional
-        source_extension = "cpp", -- optional
+        header_extension = "h",                   -- optional
+        source_extension = "cpp",                 -- optional
         custom_define_class_function_commands = { -- optional
           TSCppImplWrite = {
             output_handle = require("nt-cpp-tools.output_handlers").get_add_to_cpp(),
@@ -136,15 +136,15 @@ return {
     event = "VeryLazy",
     ---@type Flash.Config
     opts = {},
-        -- stylua: ignore
-        keys = {
-            { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-            { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-            { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-            { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-            { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-        }
-,
+    -- stylua: ignore
+    keys = {
+      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+    }
+    ,
   },
 
   {
@@ -159,6 +159,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
   },
+  --[[
   {
     "stevearc/conform.nvim",
     opts = {
@@ -172,4 +173,5 @@ return {
       },
     },
   },
+  --]]
 }
