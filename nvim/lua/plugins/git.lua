@@ -1,4 +1,13 @@
 return {
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "ibhagwan/fzf-lua"
+    }
+  },
+  {
+    "lewis6991/gitsigns.nvim"
+  }
 }

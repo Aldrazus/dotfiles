@@ -58,21 +58,20 @@ return {
   { "numToStr/Comment.nvim", opts = {} },
 
   {
-    "nvim-telescope/telescope.nvim",
-    branch = "0.1.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
-      defaults = {
-        mappings = {
-          i = {
-            ["<C-u>"] = false,
-            ["<C-d>"] = false,
-          },
-        },
-      },
+      "hide",
+      files = {
+        no_ignore = false
+      }
     },
+    keys = {
+      { "<leader>ff", "<cmd>Fzf files<cr>", desc = "FzfLua find files"},
+      { "<leader>fg", "<cmd>Fzf live_grep_native<cr>", desc = "FzfLua live grep (native)"},
+      { "<leader>fb", "<cmd>Fzf buffers<cr>", desc = "FzfLua buffers"},
+      { "<leader>fr", "<cmd>Fzf resume<cr>", desc = "FzfLua resume"},
+    }
   },
 
   {
