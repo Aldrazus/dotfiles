@@ -58,19 +58,15 @@ return {
   { "numToStr/Comment.nvim", opts = {} },
 
   {
-    "ibhagwan/fzf-lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      "hide",
-      files = {
-        no_ignore = false
-      }
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
     },
     keys = {
-      { "<leader>ff", "<cmd>Fzf files<cr>", desc = "FzfLua find files"},
-      { "<leader>fg", "<cmd>Fzf live_grep_native<cr>", desc = "FzfLua live grep (native)"},
-      { "<leader>fb", "<cmd>Fzf buffers<cr>", desc = "FzfLua buffers"},
-      { "<leader>fr", "<cmd>Fzf resume<cr>", desc = "FzfLua resume"},
+      {"<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope find files"},
+      {"<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep"},
+      {"<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers"},
+      {"<leader>fn", "<cmd>Telescope help_tags<cr>", desc = "Telescope help tags"}
     }
   },
 
