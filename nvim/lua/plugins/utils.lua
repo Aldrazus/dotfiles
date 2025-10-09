@@ -67,7 +67,10 @@ return {
       {"<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope find files"},
       {"<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep"},
       {"<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers"},
-      {"<leader>fn", "<cmd>Telescope help_tags<cr>", desc = "Telescope help tags"}
+      {"<leader>fn", "<cmd>Telescope help_tags<cr>", desc = "Telescope help tags"},
+      {"<leader>fd", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Telescope document symbols"},
+      {"<leader>fw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Telescope workspace symbols"},
+
     }
   },
 
