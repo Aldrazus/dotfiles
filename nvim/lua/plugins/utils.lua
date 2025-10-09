@@ -158,6 +158,13 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
   },
+
+  {
+    "andymass/vim-matchup",
+    config = function()
+      vim.g.matchup_matchparen_offscreen = { method = "popup" }
+    end
+  }
   --[[
   {
     "stevearc/conform.nvim",
