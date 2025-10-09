@@ -9,7 +9,8 @@ return {
     "vimdoc",
     "vim",
     "vue",
-    "glsl"
+    "glsl",
+    "scss"
   },
 
   highlight = { enable = true },
