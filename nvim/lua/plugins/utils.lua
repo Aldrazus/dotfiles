@@ -6,7 +6,6 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent_background = true,
       flavour = "mocha",
     },
     config = function(_, opts)
