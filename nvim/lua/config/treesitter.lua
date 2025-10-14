@@ -10,7 +10,9 @@ return {
     "vim",
     "vue",
     "glsl",
-    "scss"
+    "scss",
+    "java",
+    "wgsl"
   },
 
   highlight = { enable = true },

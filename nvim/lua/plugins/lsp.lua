@@ -12,7 +12,11 @@ return {
           }
         }
       },
+      {"nvim-java/nvim-java", opts = {}},
     },
+    config = function()
+      require("lspconfig").jdtls.setup {}
+    end,
   },
   {
     "mason-org/mason-lspconfig.nvim",
