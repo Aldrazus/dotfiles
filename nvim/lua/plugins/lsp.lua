@@ -1,25 +1,17 @@
 return {
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { "j-hui/fidget.nvim",
-        opts = {
-          notification = {
-            window = {
-              winblend = 0
-            }
-          }
+  { "j-hui/fidget.nvim",
+    opts = {
+      notification = {
+        window = {
+          winblend = 0
         }
-      },
-      {"nvim-java/nvim-java", opts = {}},
-    },
-    config = function()
-      require("lspconfig").jdtls.setup {}
-    end,
+      }
+    }
   },
+  {"nvim-java/nvim-java", ft = "java", opts = {}},
   {
     "mason-org/mason-lspconfig.nvim",
+    event = { "BufReadPost", "BufNewFile" },
     opts = {
         ensure_installed = { "clangd", "lua_ls", "vue_ls", "vtsls" },
     },
@@ -44,6 +36,7 @@ return {
   },
   {
     "saghen/blink.cmp",
+    event = "InsertEnter",
     dependencies = "rafamadriz/friendly-snippets",
     version = "*",
     ---@module 'blink.cmp'

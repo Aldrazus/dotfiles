@@ -1,6 +1,7 @@
 return {
   {
     "NeogitOrg/neogit",
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "sindrets/diffview.nvim",
@@ -8,6 +9,7 @@ return {
     }
   },
   {
-    "lewis6991/gitsigns.nvim"
+    "lewis6991/gitsigns.nvim",
+    event = {"BufReadPre", "BufNewFile"},
   }
 }

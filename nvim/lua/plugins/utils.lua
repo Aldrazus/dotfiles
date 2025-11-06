@@ -27,7 +27,6 @@ return {
   {
     "folke/todo-comments.nvim",
     event = "VimEnter",
-    dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
   },
 
@@ -52,25 +51,24 @@ return {
     -- See `:help ibl`
     main = "ibl",
     opts = {},
+    event = { "BufReadPost", "BufNewFile" }
   },
 
   -- "gc" to comment visual regions/lines
-  { "numToStr/Comment.nvim", opts = {} },
+  { "numToStr/Comment.nvim", opts = {}, event = { "BufReadPost", "BufNewFile" } },
 
   {
-    "nvim-telescope/telescope.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim"
-    },
+    "ibhagwan/fzf-lua",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      {"<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Telescope find files"},
-      {"<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Telescope live grep"},
-      {"<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Telescope buffers"},
-      {"<leader>fn", "<cmd>Telescope help_tags<cr>", desc = "Telescope help tags"},
-      {"<leader>fd", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Telescope document symbols"},
-      {"<leader>fw", "<cmd>Telescope lsp_workspace_symbols<cr>", desc = "Telescope workspace symbols"},
-
-    }
+      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find Files" },
+      { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
+      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
+      { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Help Tags" },
+      { "<leader>fs", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
+      { "<leader>fS", "<cmd>FzfLua lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
+    },
+    opts = {}
   },
 
   {
@@ -100,6 +98,7 @@ return {
 
   {
     "Badhi/nvim-treesitter-cpp-tools",
+    ft = { "cpp" },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     -- Optional: Configuration
     opts = function()
@@ -167,6 +166,12 @@ return {
 
   {
     "github/copilot.vim"
+  },
+  
+  -- Used by other plugins
+  {
+    "nvim-lua/plenary.nvim",
+    lazy = true,
   }
   --[[
   {
