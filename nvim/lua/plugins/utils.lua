@@ -71,6 +71,13 @@ return {
     opts = {
       files = {
         formatter = "path.filename_first"
+      },
+      winopts = {
+        width = 0.60,
+        height = 0.20,
+        preview = {
+          hidden = true
+        }
       }
     },
   },
