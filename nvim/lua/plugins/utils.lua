@@ -68,7 +68,11 @@ return {
       { "<leader>fs", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
       { "<leader>fS", "<cmd>FzfLua lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
     },
-    opts = {}
+    opts = {
+      files = {
+        formatter = "path.filename_first"
+      }
+    },
   },
 
   {
