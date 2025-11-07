@@ -78,3 +78,9 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 if vim.fn.executable("rg") == 1 then
   vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 end
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  desc = 'Open files at the last known cursor position',
+  group = vim.api.nvim_create_augroup('last_position_restore', { clear = true }),
+  command = 'silent! normal! g`"zv',
+})

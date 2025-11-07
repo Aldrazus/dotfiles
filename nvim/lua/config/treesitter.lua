@@ -12,7 +12,9 @@ return {
     "glsl",
     "scss",
     "java",
-    "wgsl"
+    "wgsl",
+    "markdown", -- required by CodeCompanion.nvim
+    "markdown_inline" -- required by CodeCompanion.nvim
   },
 
   highlight = { enable = true },
