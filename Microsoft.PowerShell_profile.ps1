@@ -1,5 +1,8 @@
-Function Prompt
-{
+Import-Module Catppuccin
+
+$Flavor = $Catppuccin['Mocha']
+
+function prompt {
     $lastCommandSucceeded = $?
     $git_cmd = "git rev-parse --abbrev-ref HEAD"
     Invoke-Expression $git_cmd 2> $null | Tee-Object -Variable git_branch | Out-Null
@@ -13,24 +16,11 @@ Function Prompt
     $path = $executionContext.SessionState.Path.CurrentLocation.Path -replace $regex, '~$1'
     $path = $path + " "
 
-    Write-Host "PS " -NoNewline -ForegroundColor DarkBlue
+    $debugPrefix = if(Test-Path variable:/PSDebugContext) { "$($Flavor.Red.Foreground())[DBG]: " }
+      else { '' }
 
-    Write-Host $path -NoNewline -ForegroundColor Yellow
-
-    if ($git_branch_text) {
-        Write-Host $git_branch_text -NoNewline -ForegroundColor Cyan
-    }
-
-    if ($lastCommandSucceeded)
-    {
-        Write-Host ('>' * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor Green
-    }
-    else
-    {
-        Write-Host ('>' * ($nestedPromptLevel + 1)) -NoNewline -ForegroundColor Red
-    }
-
-    return " "
+    $($debugPrefix + "$($Flavor.Blue.Foreground())PS $($Flavor.Yellow.Foreground())" + $($path) + $(if ($git_branch_text) { "$($Flavor.Sapphire.Foreground())$git_branch_text" }) +
+        $(if ($lastCommandSucceeded) {"$($Flavor.Green.Foreground())"} else {"$($Flavor.Red.Foreground())"}) + $(if ($NestedPromptLevel -ge 1) { '>>' }) + '> ' + $($PSStyle.Reset))
 }
 
 fnm env --use-on-cd --shell powershell | Out-String | Invoke-Expression
