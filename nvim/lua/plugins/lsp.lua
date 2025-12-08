@@ -13,7 +13,7 @@ return {
     "mason-org/mason-lspconfig.nvim",
     event = { "BufReadPost", "BufNewFile" },
     opts = {
-        ensure_installed = { "clangd", "lua_ls", "vue_ls", "vtsls" },
+        ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls" },
     },
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
