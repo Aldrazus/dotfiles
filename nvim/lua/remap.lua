@@ -24,3 +24,9 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous dia
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+
+if vim.g.vscode then
+    -- undo/REDO via vscode
+    vim.keymap.set("n","u","<Cmd>call VSCodeNotify('undo')<CR>")
+    vim.keymap.set("n","<C-r>","<Cmd>call VSCodeNotify('redo')<CR>") 
+end
