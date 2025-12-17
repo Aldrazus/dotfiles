@@ -3,7 +3,7 @@ return {
     opts = {
       notification = {
         window = {
-          winblend = 0
+          border = "rounded"
         }
       }
     }
@@ -53,6 +53,11 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
       },
+      completion = {
+        menu = {
+          winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+        }
+      }
     },
 
     opts_extend = { "sources.default" },
