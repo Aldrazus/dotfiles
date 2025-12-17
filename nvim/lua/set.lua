@@ -54,6 +54,7 @@ vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 8
 vim.opt.foldcolumn = "0"
 vim.opt.shell = "pwsh"
+vim.o.winborder = "rounded"
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1

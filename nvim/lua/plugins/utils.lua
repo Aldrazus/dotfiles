@@ -77,7 +77,8 @@ return {
         height = 0.20,
         preview = {
           hidden = true
-        }
+        },
+        border = "rounded"
       }
     },
   },
