@@ -2,8 +2,14 @@
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
 SETUVAR --export JAVA_HOME:/opt/jdk1\x2e8\x2e0_202
+SETUVAR --export --path LD_LIBRARY_PATH:\x7e/vulkan/1\x2e4\x2e335\x2e0/x86_64/lib
+SETUVAR --export --path PKG_CONFIG_PATH:\x7e/vulkan/1\x2e4\x2e335\x2e0/x86_64/lib/pkgconfig/
 SETUVAR --export SUDO_EDITOR:nvim
+SETUVAR --export VCPKG_ROOT:\x7e/vcpkg
 SETUVAR --export VISUAL:nvim
+SETUVAR --export --path VK_ADD_LAYER_PATH:\x7e/vulkan/1\x2e4\x2e335\x2e0/x86_64/share/vulkan/explicit_layer\x2ed
+SETUVAR --export --path VK_LAYER_PATH:\x7e/vulkan/1\x2e4\x2e335\x2e0/x86_64/share/vulkan/explicit_layer\x2ed
+SETUVAR --export VULKAN_SDK:\x7e/vulkan/1\x2e4\x2e335\x2e0/x86_64
 SETUVAR __fish_initialized:3800
 SETUVAR _fisher_catppuccin_2F_fish_files:\x7e/\x2econfig/fish/themes/Catppuccin\x20Frappe\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Latte\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Macchiato\x2etheme\x1e\x7e/\x2econfig/fish/themes/Catppuccin\x20Mocha\x2etheme
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
@@ -48,4 +54,4 @@ SETUVAR fish_pager_color_selected_background:\x1d
 SETUVAR fish_pager_color_selected_completion:\x1d
 SETUVAR fish_pager_color_selected_description:\x1d
 SETUVAR fish_pager_color_selected_prefix:\x1d
-SETUVAR fish_user_paths:/home/aldrazus/\x2elocal/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin\x1e/opt/jdk1\x2e8\x2e0_202/bin\x1e/home/aespinal/\x2elocal/share/fnm\x1e/home/aldrazus/\x2elocal/share/fnm
+SETUVAR fish_user_paths:/home/aldrazus/\x2elocal/bin\x1e/opt/nvim\x2dlinux\x2dx86_64/bin\x1e/opt/jdk1\x2e8\x2e0_202/bin\x1e/home/aespinal/\x2elocal/share/fnm\x1e/home/aldrazus/\x2elocal/share/fnm\x1e/home/aldrazus/vulkan/1\x2e4\x2e335\x2e0/x86_64/bin\x1e\x7e/vulkan/1\x2e4\x2e335\x2e0/x86_64/bin\x1e\x7e/vcpkg

@@ -11,7 +11,6 @@ return {
   {"nvim-java/nvim-java", ft = "java", opts = {}},
   {
     "mason-org/mason-lspconfig.nvim",
-    event = { "BufReadPost", "BufNewFile" },
     opts = {
         ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls" },
     },
