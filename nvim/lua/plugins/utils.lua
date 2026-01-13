@@ -1,19 +1,4 @@
 return {
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    version = "^1.11.0",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      flavour = "mocha",
-    },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd([[colorscheme catppuccin]])
-    end,
-  },
-
   -- Autopairs
   {
     "windwp/nvim-autopairs",
@@ -28,20 +13,6 @@ return {
     "folke/todo-comments.nvim",
     event = "VimEnter",
     opts = { signs = false },
-  },
-
-  {
-    -- Set lualine as statusline
-    "nvim-lualine/lualine.nvim",
-    -- See `:help lualine.txt`
-    opts = {
-      options = {
-        icons_enabled = false,
-        theme = "auto",
-        component_separators = "|",
-        section_separators = "",
-      },
-    },
   },
 
   {
@@ -61,11 +32,11 @@ return {
     "ibhagwan/fzf-lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     keys = {
-      { "<leader>ff", "<cmd>FzfLua files<cr>", desc = "Find Files" },
-      { "<leader>fg", "<cmd>FzfLua live_grep<cr>", desc = "Live Grep" },
-      { "<leader>fb", "<cmd>FzfLua buffers<cr>", desc = "Buffers" },
-      { "<leader>fh", "<cmd>FzfLua help_tags<cr>", desc = "Help Tags" },
-      { "<leader>fs", "<cmd>FzfLua lsp_document_symbols<cr>", desc = "Document Symbols" },
+      { "<leader>ff", "<cmd>FzfLua files<cr>",                 desc = "Find Files" },
+      { "<leader>fg", "<cmd>FzfLua live_grep<cr>",             desc = "Live Grep" },
+      { "<leader>fb", "<cmd>FzfLua buffers<cr>",               desc = "Buffers" },
+      { "<leader>fh", "<cmd>FzfLua help_tags<cr>",             desc = "Help Tags" },
+      { "<leader>fs", "<cmd>FzfLua lsp_document_symbols<cr>",  desc = "Document Symbols" },
       { "<leader>fS", "<cmd>FzfLua lsp_workspace_symbols<cr>", desc = "Workspace Symbols" },
     },
     opts = {
@@ -92,13 +63,6 @@ return {
     end,
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
-    end,
-  },
-
-  {
-    "nvim-lualine/lualine.nvim",
-    opts = function()
-      require("config.lualine")
     end,
   },
 
@@ -175,7 +139,7 @@ return {
       vim.g.matchup_matchparen_offscreen = { method = "popup" }
     end
   },
-  
+
   -- Used by other plugins
   {
     "nvim-lua/plenary.nvim",
@@ -190,19 +154,21 @@ return {
     },
     opts = {},
     keys = {
-        { "<leader>sl", function() require("nvim-possession").list() end, desc = "📌list sessions", },
-        { "<leader>sn", function() require("nvim-possession").new() end, desc = "📌create new session", },
-        { "<leader>su", function() require("nvim-possession").update() end, desc = "📌update current session", },
-        { "<leader>sd", function() require("nvim-possession").delete() end, desc = "📌delete selected session"},
+      { "<leader>sl", function() require("nvim-possession").list() end, desc = "📌list sessions", },
+      { "<leader>sn", function() require("nvim-possession").new() end, desc = "📌create new session", },
+      { "<leader>su", function() require("nvim-possession").update() end, desc = "📌update current session", },
+      { "<leader>sd", function() require("nvim-possession").delete() end, desc = "📌delete selected session" },
     },
-  }
-  --[[
+  },
   {
     "stevearc/conform.nvim",
     opts = {
+      log_level = vim.log.levels.DEBUG,
       formatters_by_ft = {
         lua = { "stylua" },
-        javascript = { "prettierd" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        vue = { "prettierd", "prettier", stop_after_first = true },
       },
       format_on_save = {
         timeout_ms = 500,
@@ -210,5 +176,4 @@ return {
       },
     },
   },
-  --]]
 }
