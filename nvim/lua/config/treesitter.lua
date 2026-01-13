@@ -14,7 +14,8 @@ return {
     "java",
     "wgsl",
     "markdown", -- required by CodeCompanion.nvim
-    "markdown_inline" -- required by CodeCompanion.nvim
+    "markdown_inline", -- required by CodeCompanion.nvim
+    "yaml" -- required by CodeCompanion.nvim
   },
 
   highlight = { enable = true },
