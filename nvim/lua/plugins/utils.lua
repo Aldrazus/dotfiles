@@ -44,8 +44,9 @@ return {
         formatter = "path.filename_first"
       },
       winopts = {
-        width = 0.60,
-        height = 0.20,
+        width = 80,
+        height = 20,
+        row = 0.1,
         preview = {
           hidden = true
         },
