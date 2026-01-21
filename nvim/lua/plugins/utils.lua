@@ -163,7 +163,6 @@ return {
   {
     "stevearc/conform.nvim",
     opts = {
-      log_level = vim.log.levels.DEBUG,
       formatters_by_ft = {
         lua = { "stylua" },
         javascript = { "prettierd", "prettier", stop_after_first = true },
