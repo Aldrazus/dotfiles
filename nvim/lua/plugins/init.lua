@@ -1,1 +1,9 @@
-return {}
+require("plugins.core")
+require("plugins.treesitter")
+require("plugins.utils")
+require("plugins.git")
+require("plugins.ui")
+require("plugins.lsp")
+require("plugins.snacks")
+require("plugins.ai")
+require("plugins.debug")

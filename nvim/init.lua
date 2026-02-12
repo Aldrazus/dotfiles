@@ -1,6 +1,6 @@
 require("set")
 require("remap")
-require("config.lazy")
+require("plugins")
 
 -- TODO: consider moving somewhere else
-require("config.lspconfig")
+-- require("config.lspconfig")

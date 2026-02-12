@@ -45,7 +45,6 @@ vim.opt.updatetime = 50
 vim.opt.mouse = "a"
 vim.opt.showtabline = 1
 vim.opt.inccommand = "split"
-vim.opt.cmdheight = 2
 vim.opt.shortmess:append("c")
 vim.opt.keywordprg = ":help"
 vim.opt.foldmethod = "expr"
@@ -81,7 +80,7 @@ if vim.fn.executable("rg") == 1 then
 end
 
 vim.api.nvim_create_autocmd("BufReadPost", {
-  desc = 'Open files at the last known cursor position',
-  group = vim.api.nvim_create_augroup('last_position_restore', { clear = true }),
+  desc = "Open files at the last known cursor position",
+  group = vim.api.nvim_create_augroup("last_position_restore", { clear = true }),
   command = 'silent! normal! g`"zv',
 })
