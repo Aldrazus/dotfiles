@@ -1,26 +1,45 @@
-vim.pack.add({"https://github.com/j-hui/fidget.nvim"})
-require('fidget').setup({
+vim.pack.add({ "https://github.com/j-hui/fidget.nvim" })
+require("fidget").setup({
   notification = {
     window = {
       border = "rounded",
-      winblend = 100
-    }
-  }
+      winblend = 100,
+    },
+  },
 })
 
 -- LSP default configs
-vim.pack.add({"https://github.com/neovim/nvim-lspconfig"})
+vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
 
 -- LSP package manager
-vim.pack.add({"https://github.com/mason-org/mason.nvim"})
-vim.pack.add({"https://github.com/mason-org/mason-lspconfig.nvim"})
+vim.pack.add({ "https://github.com/mason-org/mason.nvim" })
+vim.pack.add({ "https://github.com/mason-org/mason-lspconfig.nvim" })
 
 -- Snippets
-vim.pack.add({"https://github.com/rafamadriz/friendly-snippets"})
-vim.pack.add({"https://github.com/folke/lazydev.nvim"})
-vim.pack.add({"https://github.com/saghen/blink.cmp"})
+vim.pack.add({ "https://github.com/rafamadriz/friendly-snippets" })
+vim.pack.add({ "https://github.com/folke/lazydev.nvim" })
 
-require('blink.cmp').setup({
+-- Sourced from: https://github.com/saghen/blink.cmp/issues/1059#issuecomment-3393599998
+-- Create an event to build `blink.cmp` with `cargo build --release`.
+-- This event should be defined *before* the `vim.pack.add` call
+-- so it runs automatically after the plugin is installed.
+vim.api.nvim_create_autocmd("PackChanged", {
+  pattern = "blink.cmp",
+  group = vim.api.nvim_create_augroup("blink_update", { clear = true }),
+  callback = function(e)
+    if e.data.kind == "update" then
+      -- Recommended way to access plugin files inside `PackChanged` event
+      -- vim.cmd [[packadd blink.cmp]]
+      vim.cmd.packadd({ args = { e.data.spec.name }, bang = false })
+      -- Build the plugin from source
+      -- vim.cmd [[BlinkCmp build]]
+      require("blink.cmp.fuzzy.build").build()
+    end
+  end,
+})
+vim.pack.add({ "https://github.com/saghen/blink.cmp" })
+
+require("blink.cmp").setup({
   keymap = { preset = "enter" },
   appearance = {
     use_nvim_cmp_as_default = true,
@@ -36,19 +55,19 @@ require('blink.cmp').setup({
         name = "LazyDev",
         module = "lazydev.integrations.blink",
         score_offset = 100,
-      }
-    }
+      },
+    },
   },
   completion = {
     menu = {
       winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
-    }
-  }
+    },
+  },
 })
 
-require('mason').setup({})
-require('mason-lspconfig').setup({
-  ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls" }
+require("mason").setup({})
+require("mason-lspconfig").setup({
+  ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls" },
 })
 
 local function set_global_keymaps(client, bufnr)
@@ -74,14 +93,14 @@ local function set_global_keymaps(client, bufnr)
   end, opts("List workspace folders"))
 end
 
-vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('global.lsp', {}),
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("global.lsp", {}),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local bufnr = args.buf
 
     set_global_keymaps(client, bufnr)
-  end
+  end,
 })
 
 vim.lsp.config("*", {
