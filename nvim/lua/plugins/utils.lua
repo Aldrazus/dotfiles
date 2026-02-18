@@ -57,3 +57,5 @@ require("match-up").setup({
     stopline = 500,
   },
 })
+
+vim.pack.add({ "https://github.com/tpope/vim-surround" })
