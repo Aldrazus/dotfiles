@@ -14,9 +14,9 @@ local languages = {
   "scss",
   "java",
   "wgsl",
-  "markdown", -- required by CodeCompanion.nvim
+  "markdown",        -- required by CodeCompanion.nvim
   "markdown_inline", -- required by CodeCompanion.nvim
-  "yaml", -- required by CodeCompanion.nvim
+  "yaml",            -- required by CodeCompanion.nvim
 }
 
 require("nvim-treesitter").install(languages)
