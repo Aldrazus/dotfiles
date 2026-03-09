@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
     end
   end,
 })
-vim.pack.add({ "https://github.com/saghen/blink.cmp" })
+vim.pack.add({ {src = "https://github.com/saghen/blink.cmp", version = vim.version.range('*')} })
 
 require("blink.cmp").setup({
   keymap = { preset = "enter" },
