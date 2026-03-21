@@ -11,6 +11,9 @@ require("fidget").setup({
 -- LSP default configs
 vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
 
+-- Java
+vim.pack.add({ "https://github.com/mfussenegger/nvim-jdtls" })
+
 -- LSP package manager
 vim.pack.add({ "https://github.com/mason-org/mason.nvim" })
 vim.pack.add({ "https://github.com/mason-org/mason-lspconfig.nvim" })
@@ -67,7 +70,7 @@ require("blink.cmp").setup({
 
 require("mason").setup({})
 require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls" },
+  ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls", "jdtls" },
 })
 
 local function set_global_keymaps(client, bufnr)
