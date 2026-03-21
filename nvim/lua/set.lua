@@ -12,12 +12,10 @@ local function get_home_dir()
 end
 
 vim.opt.fileencoding = "UTF-8"
-vim.opt.encoding = "UTF-8"
 
 vim.opt.showmode = false
 vim.opt.relativenumber = true
 vim.opt.nu = true
-vim.opt.hidden = true
 vim.opt.errorbells = false
 
 vim.opt.tabstop = 4
@@ -70,10 +68,6 @@ vim.filetype.add({
   },
 })
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-  pattern = { "*.vert", "*.frag", "*.vsh", "*.fsh" },
-  command = "setfiletype glsl",
-})
 
 if vim.fn.executable("rg") == 1 then
   vim.opt.grepprg = "rg --vimgrep --no-heading --smart-case"

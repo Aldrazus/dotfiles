@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
     end
   end,
 })
-vim.pack.add({ {src = "https://github.com/saghen/blink.cmp", version = vim.version.range('*')} })
+vim.pack.add({ { src = "https://github.com/saghen/blink.cmp", version = "v1.10.1" } })
 
 require("blink.cmp").setup({
   keymap = { preset = "enter" },
@@ -49,7 +49,7 @@ require("blink.cmp").setup({
     enabled = false,
   },
   sources = {
-    default = { "lsp", "path", "snippets", "buffer" },
+    default = { "lsp", "path", "snippets", "buffer", "lazydev" },
     providers = {
       lazydev = {
         name = "LazyDev",
@@ -94,7 +94,7 @@ local function set_global_keymaps(client, bufnr)
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("global.lsp", {}),
+  group = vim.api.nvim_create_augroup("global.lsp", { clear = true }),
   callback = function(args)
     local client = assert(vim.lsp.get_client_by_id(args.data.client_id))
     local bufnr = args.buf

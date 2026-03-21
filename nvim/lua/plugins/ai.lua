@@ -39,15 +39,14 @@ require("codecompanion").setup({
     },
   },
   adapters = {
-    acp = {
-      claude_code = function()
-        return require("codecompanion.adapters").extend("claude_code", {
-          env = {
-            ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),
-          },
-        })
-      end,
-    },
+    claude_code = function()
+      return require("codecompanion.adapters").extend("claude_code", {
+        env = {
+          ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY"),
+          CLAUDE_CODE_OAUTH_TOKEN = os.getenv("CLAUDE_CODE_OAUTH_TOKEN"),
+        },
+      })
+    end,
   },
   display = {
     action_palette = {
