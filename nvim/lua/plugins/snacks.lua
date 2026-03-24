@@ -6,16 +6,7 @@ vim.pack.add({
 local Snacks = require("snacks")
 Snacks.setup({
   indent = {},
-  picker = {},
-  dashboard = {
-    enabled = true,
-    sections = {
-      { section = "header" },
-      { section = "keys", gap = 1 },
-      { icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = { 2, 2 } },
-      { icon = " ", title = "Projects", section = "projects", indent = 2, padding = 2 },
-    },
-  },
+  picker = {}
 })
 
 local map = vim.keymap.set
