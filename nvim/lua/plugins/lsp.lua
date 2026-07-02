@@ -14,6 +14,9 @@ vim.pack.add({ "https://github.com/neovim/nvim-lspconfig" })
 -- Java
 vim.pack.add({ "https://github.com/mfussenegger/nvim-jdtls" })
 
+-- C# / Roslyn
+vim.pack.add({ "https://github.com/seblj/roslyn.nvim" })
+
 -- LSP package manager
 vim.pack.add({ "https://github.com/mason-org/mason.nvim" })
 vim.pack.add({ "https://github.com/mason-org/mason-lspconfig.nvim" })
@@ -43,7 +46,9 @@ vim.api.nvim_create_autocmd("PackChanged", {
 vim.pack.add({ { src = "https://github.com/saghen/blink.cmp", version = "v1.10.1" } })
 
 require("blink.cmp").setup({
-  keymap = { preset = "enter" },
+  keymap = {
+    preset = "enter",
+  },
   appearance = {
     use_nvim_cmp_as_default = true,
     nerd_font_variant = "mono",
@@ -68,10 +73,17 @@ require("blink.cmp").setup({
   },
 })
 
-require("mason").setup({})
-require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls", "jdtls" },
+require("mason").setup({
+  registries = {
+    "github:mason-org/mason-registry",
+    "github:Crashdummyy/mason-registry",
+  },
 })
+require("mason-lspconfig").setup({
+  ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls", "jdtls", "gopls" },
+})
+
+require("roslyn").setup({})
 
 local function set_global_keymaps(client, bufnr)
   local map = vim.keymap.set

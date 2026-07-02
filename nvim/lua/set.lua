@@ -53,6 +53,10 @@ vim.opt.foldcolumn = "0"
 vim.opt.shell = "pwsh"
 vim.o.winborder = "rounded"
 
+vim.opt.diffopt:append('iwhite')
+vim.opt.diffopt:append('algorithm:histogram')
+vim.opt.diffopt:append('indent-heuristic')
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 

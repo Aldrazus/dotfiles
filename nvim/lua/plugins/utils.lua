@@ -11,7 +11,14 @@ require("Comment").setup({})
 
 vim.pack.add({ "https://github.com/folke/flash.nvim" })
 local Flash = require("flash")
-Flash.setup({})
+Flash.setup({
+  modes = {
+    char = {
+      enabled = true,
+      jump_labels = true,
+    },
+  },
+})
 
 local map = vim.keymap.set
 map({ "n", "x", "o" }, "s", function()

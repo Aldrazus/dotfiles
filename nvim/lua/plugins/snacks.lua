@@ -6,7 +6,30 @@ vim.pack.add({
 local Snacks = require("snacks")
 Snacks.setup({
   indent = {},
-  picker = {}
+  picker = {
+    sources = {
+      lsp_symbols = {
+        filter = {
+          default = {
+            "Class",
+            "Constructor",
+            "Enum",
+            "Field",
+            "Function",
+            "Interface",
+            "Method",
+            "Module",
+            "Namespace",
+            "Package",
+            "Property",
+            "Struct",
+            "Trait",
+            "Variable",
+          },
+        },
+      },
+    },
+  }
 })
 
 local map = vim.keymap.set
