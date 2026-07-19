@@ -80,7 +80,7 @@ require("mason").setup({
   },
 })
 require("mason-lspconfig").setup({
-  ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls", "jdtls", "gopls" },
+  ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls", "jdtls" },
 })
 
 require("roslyn").setup({})
