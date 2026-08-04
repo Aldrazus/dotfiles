@@ -26,6 +26,7 @@ require("lazy").setup({
     { import = "plugins.snacks" },
     { import = "plugins.ai" },
     { import = "plugins.debug" },
+    { import = "plugins.leetcode" },
   },
   change_detection = {
     notify = false,

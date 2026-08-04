@@ -6,5 +6,6 @@ return {
         '--header-insertion=never'
     },
     root_markers = { '.clangd', 'compile_commands.json' },
+    workspace_required = false,
     filetypes = { 'c', 'cpp' },
 }

@@ -35,9 +35,9 @@ return {
     },
   },
 
-  { "neovim/nvim-lspconfig", lazy = false },
+  { "neovim/nvim-lspconfig",   lazy = false },
   { "mfussenegger/nvim-jdtls", ft = "java" },
-  { "seblj/roslyn.nvim", ft = "cs", opts = {} },
+  { "seblj/roslyn.nvim",       ft = "cs",   opts = {} },
 
   {
     "mason-org/mason.nvim",
@@ -58,7 +58,7 @@ return {
   },
 
   { "rafamadriz/friendly-snippets", lazy = true },
-  { "folke/lazydev.nvim", ft = "lua", opts = {} },
+  { "folke/lazydev.nvim",           ft = "lua", opts = {} },
 
   {
     "saghen/blink.cmp",

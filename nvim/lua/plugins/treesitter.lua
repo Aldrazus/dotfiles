@@ -15,6 +15,7 @@ local languages = {
   "markdown",
   "markdown_inline",
   "yaml",
+  "html",
 }
 
 return {

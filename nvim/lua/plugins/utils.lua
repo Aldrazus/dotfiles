@@ -4,7 +4,7 @@ return {
     event = "InsertEnter",
     opts = {},
   },
-  { "tpope/vim-sleuth", event = { "BufReadPost", "BufNewFile" } },
+  { "tpope/vim-sleuth",     event = { "BufReadPost", "BufNewFile" } },
   {
     "folke/todo-comments.nvim",
     event = { "BufReadPost", "BufNewFile" },
@@ -31,11 +31,11 @@ return {
       },
     },
     keys = {
-      { "s", function() require("flash").jump() end, mode = { "n", "x", "o" } },
-      { "S", function() require("flash").treesitter() end, mode = { "n", "x", "o" } },
-      { "r", function() require("flash").remote() end, mode = "o" },
-      { "R", function() require("flash").treesitter_search() end, mode = { "o", "x" } },
-      { "<c-s>", function() require("flash").toggle() end, mode = "c" },
+      { "s",     function() require("flash").jump() end,              mode = { "n", "x", "o" } },
+      { "S",     function() require("flash").treesitter() end,        mode = { "n", "x", "o" } },
+      { "r",     function() require("flash").remote() end,            mode = "o" },
+      { "R",     function() require("flash").treesitter_search() end, mode = { "o", "x" } },
+      { "<c-s>", function() require("flash").toggle() end,            mode = "c" },
     },
   },
   {
@@ -65,5 +65,5 @@ return {
     },
   },
   { "andymass/vim-matchup", event = { "BufReadPost", "BufNewFile" } },
-  { "tpope/vim-surround", event = { "BufReadPost", "BufNewFile" } },
+  { "tpope/vim-surround",   event = { "BufReadPost", "BufNewFile" } },
 }
