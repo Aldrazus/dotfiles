@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "servers": [
+    {
+      "id": "clangd",
+      "enabled": true,
+      "include": [
+        "**/*.c",
+        "**/*.h",
+        "**/*.m",
+        "**/*.cc",
+        "**/*.cpp",
+        "**/*.cxx",
+        "**/*.hh",
+        "**/*.hpp",
+        "**/*.hxx",
+        "**/*.ipp",
+        "**/*.mm"
+      ],
+      "exclude": [
+        "**/build/**",
+        "**/.git/**"
+      ],
+      "rootMarkers": [
+        "compile_commands.json",
+        "compile_flags.txt",
+        ".clangd",
+        ".git"
+      ],
+      "bin": "clangd",
+      "args": [
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu"
+      ],
+      "cwd": "{root}",
+      "languageIdByExtension": {
+        ".c": "c",
+        ".h": "c",
+        ".m": "objective-c",
+        ".cc": "cpp",
+        ".cpp": "cpp",
+        ".cxx": "cpp",
+        ".hh": "cpp",
+        ".hpp": "cpp",
+        ".hxx": "cpp",
+        ".ipp": "cpp",
+        ".mm": "objective-cpp"
+      },
+      "startupTimeoutMs": 45000,
+      "diagnosticsWaitMs": 2000,
+      "initializationOptions": {},
+      "settings": {}
+    }
+  ]
+}
