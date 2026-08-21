@@ -11,6 +11,20 @@ local function get_home_dir()
   return os.getenv("HOME") or "."
 end
 
+local function prepend_fnm_node_path()
+  if is_windows() or vim.fn.executable("npm") == 1 then
+    return
+  end
+
+  local data_home = vim.env.XDG_DATA_HOME or get_home_dir() .. "/.local/share"
+  local node_bin = data_home .. "/fnm/aliases/default/bin"
+  if vim.fn.executable(node_bin .. "/npm") == 1 then
+    vim.env.PATH = node_bin .. ":" .. (vim.env.PATH or "")
+  end
+end
+
+prepend_fnm_node_path()
+
 vim.opt.fileencoding = "UTF-8"
 
 vim.opt.showmode = false

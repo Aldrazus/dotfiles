@@ -1,0 +1,5 @@
+# Rust is optional: configure it only when rustup is installed locally.
+set -l rustup_env "$HOME/.cargo/env.fish"
+if test -f $rustup_env
+    source $rustup_env
+end

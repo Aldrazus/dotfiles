@@ -63,7 +63,6 @@ return {
   {
     "saghen/blink.cmp",
     version = "v1.10.1",
-    build = "cargo build --release",
     dependencies = { "rafamadriz/friendly-snippets", "folke/lazydev.nvim" },
     opts = {
       keymap = {
