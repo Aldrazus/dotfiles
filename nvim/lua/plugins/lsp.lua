@@ -1,4 +1,4 @@
-local function set_global_keymaps(_, bufnr)
+local function set_global_keymaps(client, bufnr)
   local map = vim.keymap.set
 
   local function opts(desc)
@@ -9,6 +9,14 @@ local function set_global_keymaps(_, bufnr)
   map("n", "<leader>sh", vim.lsp.buf.signature_help, opts("Show signature help"))
   map("n", "<leader>rn", vim.lsp.buf.rename, opts("[r]e[n]ame"))
   map({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts("[c]ode [a]ction"))
+
+  if client:supports_method("textDocument/inlayHint", bufnr) then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    map("n", "<leader>uh", function()
+      local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr })
+      vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+    end, opts("Toggle inlay hints"))
+  end
 
   vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
     vim.lsp.buf.format()
@@ -69,7 +77,7 @@ return {
     },
     config = function(_, opts)
       require("mason").setup(opts)
-      ensure_mason_packages({ "java-debug-adapter", "java-test" })
+      ensure_mason_packages({ "tree-sitter-cli", "java-debug-adapter", "java-test" })
     end,
   },
 

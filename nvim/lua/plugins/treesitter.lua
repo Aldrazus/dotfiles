@@ -21,10 +21,24 @@ local languages = {
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
+    dependencies = { "mason-org/mason.nvim" },
     config = function()
-      require("nvim-treesitter").install(languages)
+      local function install_parsers()
+        require("nvim-treesitter").install(languages)
+      end
+
+      if vim.fn.executable("tree-sitter") == 1 then
+        install_parsers()
+      else
+        require("mason-registry"):on("package:install:success", function(package)
+          if package.name == "tree-sitter-cli" then
+            vim.schedule(install_parsers)
+          end
+        end)
+      end
 
       vim.api.nvim_create_autocmd("FileType", {
         group = vim.api.nvim_create_augroup("treesitter.setup", { clear = true }),
