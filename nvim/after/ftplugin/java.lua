@@ -1,11 +1,13 @@
 local jdtls = require("jdtls")
 local jdtls_dap = require("jdtls.dap")
 
-local root_dir = vim.fs.dirname(
-  vim.fs.find({ "pom.xml", "build.gradle", "build.gradle.kts", ".git" }, { upward = true })[1]
-) or vim.fn.getcwd()
+local root_marker = vim.fs.find(
+  { "pom.xml", "build.gradle", "build.gradle.kts", ".git" },
+  { upward = true }
+)[1]
+local root_dir = root_marker and vim.fs.dirname(root_marker) or vim.fn.getcwd()
 
-local project_name = vim.fn.fnamemodify(root_dir, ":p:h:t")
+local project_name = vim.fs.basename(root_dir) .. "-" .. vim.fn.sha256(root_dir):sub(1, 8)
 local workspace_dir = vim.fn.stdpath("data") .. "/jdtls/workspaces/" .. project_name
 
 -- Collect DAP bundles (requires java-debug-adapter and java-test from Mason)
@@ -28,6 +30,7 @@ vim.list_extend(bundles, test_jars)
 local config = {
   cmd = { "jdtls", "-data", workspace_dir },
   root_dir = root_dir,
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
   settings = {
     java = {
       eclipse = { downloadSources = true },

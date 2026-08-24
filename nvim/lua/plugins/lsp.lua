@@ -21,6 +21,26 @@ local function set_global_keymaps(_, bufnr)
   end, opts("List workspace folders"))
 end
 
+local function ensure_mason_packages(package_names)
+  if #vim.api.nvim_list_uis() == 0 then
+    return
+  end
+
+  local registry = require("mason-registry")
+  registry.refresh(function(success)
+    if not success then
+      return
+    end
+
+    for _, package_name in ipairs(package_names) do
+      local ok, package = pcall(registry.get_package, package_name)
+      if ok and not package:is_installed() and not package:is_installing() then
+        package:install()
+      end
+    end
+  end)
+end
+
 return {
   {
     "j-hui/fidget.nvim",
@@ -47,6 +67,10 @@ return {
         "github:Crashdummyy/mason-registry",
       },
     },
+    config = function(_, opts)
+      require("mason").setup(opts)
+      ensure_mason_packages({ "java-debug-adapter", "java-test" })
+    end,
   },
 
   {
@@ -54,6 +78,9 @@ return {
     dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
     opts = {
       ensure_installed = { "clangd", "neocmake", "lua_ls", "vue_ls", "vtsls", "jdtls" },
+      automatic_enable = {
+        exclude = { "jdtls" },
+      },
     },
   },
 

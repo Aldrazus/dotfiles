@@ -2,6 +2,7 @@
 
 # Pi local/private state
 pi/agent/auth.json
+pi/agent/bin/
 pi/agent/sessions/
 pi/agent/trust/
 fish/fish_variables

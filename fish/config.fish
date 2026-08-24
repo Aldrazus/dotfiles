@@ -15,3 +15,6 @@ if not string match -q -- $PNPM_HOME $PATH
     set -gx PATH $PNPM_HOME $PATH
 end
 # pnpm end
+
+# Pi
+fish_add_path "/Users/aespinal/.local/share/fnm/node-versions/v26.7.0/installation/bin"
