@@ -7,6 +7,7 @@ This repository contains personal dotfiles and application configuration for she
 ## Layout
 
 - Shell configuration lives in `fish/` and `Microsoft.PowerShell_profile.ps1`.
+- Git configuration lives in `.gitconfig`.
 - Tmux configuration lives in `.tmux.conf`.
 - Neovim configuration lives in `nvim/`; plugin specifications are split across `nvim/lua/plugins/`, and filetype/LSP overrides live under `nvim/after/`.
 - Terminal and editor configuration lives in `ghostty/` and `zed/`.
@@ -33,6 +34,7 @@ Run the checks relevant to the files changed, when the required tools are instal
 
 ```sh
 fish -n fish/config.fish fish/conf.d/*.fish
+git config --file .gitconfig --list
 stylua --check nvim
 jq empty nvim/lazy-lock.json pi/agent/lsp.json pi/agent/models-store.json \
   pi/agent/settings.json

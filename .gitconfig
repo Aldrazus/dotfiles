@@ -1,0 +1,21 @@
+[user]
+	name = Alberto Espinal
+	email = aespinal59@gmail.com
+
+[color]
+	ui = true
+
+[alias]
+	c = commit
+	cam = commit -a -m
+	cane = commit --amend --no-edit
+	s = status
+	lg = log --oneline
+	last = log -1 HEAD
+
+[pull]
+	ff = only
+
+[diff]
+	algorithm = histogram
+	indentHeuristic = true
