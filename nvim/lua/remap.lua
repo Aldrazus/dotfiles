@@ -16,8 +16,8 @@ vim.keymap.set("n", "<leader>y", '"+y')
 vim.keymap.set("v", "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
 
-vim.keymap.set("n", "<leader>d", '"_d')
-vim.keymap.set("v", "<leader>d", '"_d')
+vim.keymap.set("n", "<leader>x", '"_d')
+vim.keymap.set("v", "<leader>x", '"_d')
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", function()

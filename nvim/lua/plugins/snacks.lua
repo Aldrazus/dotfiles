@@ -5,6 +5,7 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     opts = {
       indent = {},
+      terminal = {},
       picker = {
         sources = {
           lsp_symbols = {
@@ -34,11 +35,18 @@ return {
       { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
       { "<leader>fg", function() Snacks.picker.grep() end, desc = "Live Grep" },
       { "<leader>fb", function() Snacks.picker.buffers() end, desc = "Find Buffers" },
-      { "<leader>st", function() Snacks.picker.todo_comments() end, desc = "Find TODO comments" },
+      { "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent Files" },
+      { "<leader>fc", function() Snacks.picker.commands() end, desc = "Commands" },
+      { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "Workspace Diagnostics" },
+      { "<leader>fD", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
+      { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+      { "<leader>fR", function() Snacks.picker.resume() end, desc = "Resume Picker" },
+      { "<leader>ft", function() Snacks.picker.todo_comments() end, desc = "Find TODO comments" },
+      { "<leader>fu", function() Snacks.picker.undo() end, desc = "Undo History" },
+      { "<C-/>", function() Snacks.terminal() end, mode = { "n", "t" }, desc = "Toggle Terminal" },
+      { "<C-_>", function() Snacks.terminal() end, mode = { "n", "t" }, desc = "Toggle Terminal" },
       { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Go to declaration" },
       { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Go to definition" },
-      { "gr", function() Snacks.picker.lsp_references() end, desc = "Go to references" },
-      { "gi", function() Snacks.picker.lsp_implementation() end, desc = "Go to implementation" },
       { "gy", function() Snacks.picker.lsp_type_definitions() end, desc = "Go to type definition" },
       { "<leader>ds", function() Snacks.picker.lsp_symbols() end, desc = "[d]ocument [s]ymbols" },
       { "<leader>ws", function() Snacks.picker.lsp_workspace_symbols() end, desc = "[w]orkspace [s]ymbols" },
