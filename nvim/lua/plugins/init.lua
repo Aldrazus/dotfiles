@@ -24,6 +24,7 @@ require("lazy").setup({
     { import = "plugins.ui" },
     { import = "plugins.lsp" },
     { import = "plugins.snacks" },
+    { import = "plugins.terminal" },
     { import = "plugins.ai" },
     { import = "plugins.debug" },
     { import = "plugins.leetcode" },
