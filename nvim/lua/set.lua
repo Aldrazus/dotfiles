@@ -52,6 +52,13 @@ vim.opt.foldnestmax = 8
 vim.opt.foldcolumn = "0"
 vim.o.winborder = "rounded"
 
+if is_windows() then
+  vim.o.shell = "pwsh"
+  vim.o.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
+  vim.o.shellquote = ""
+  vim.o.shellxquote = ""
+end
+
 vim.opt.diffopt:append('iwhite')
 vim.opt.diffopt:append('algorithm:histogram')
 vim.opt.diffopt:append('indent-heuristic')

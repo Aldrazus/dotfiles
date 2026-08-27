@@ -56,7 +56,7 @@ return {
     opts = {
       notification = {
         window = {
-          border = "rounded",
+          border = "none",
           winblend = 100,
         },
       },
