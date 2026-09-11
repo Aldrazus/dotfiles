@@ -1,3 +1,5 @@
+local popup_blend = vim.g.neovide and 50 or 0
+
 return {
   {
     "folke/snacks.nvim",
@@ -11,6 +13,7 @@ return {
           hidden = { "preview" },
           layout = {
             backdrop = false,
+            wo = { winblend = popup_blend },
             row = 1,
             width = 0.4,
             min_width = 80,
@@ -19,9 +22,9 @@ return {
             box = "vertical",
             title = "{title} {live} {flags}",
             title_pos = "center",
-            { win = "input",   height = 1,          border = "bottom" },
-            { win = "list",    border = "none" },
-            { win = "preview", title = "{preview}", border = true },
+            { win = "input",   height = 1,          border = "bottom", wo = { winblend = popup_blend } },
+            { win = "list",    border = "none",     wo = { winblend = popup_blend } },
+            { win = "preview", title = "{preview}", border = true,     wo = { winblend = popup_blend } },
           }
         },
         sources = {

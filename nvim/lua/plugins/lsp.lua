@@ -1,3 +1,5 @@
+local popup_blend = vim.g.neovide and 50 or 0
+
 local function set_global_keymaps(client, bufnr)
   local map = vim.keymap.set
 
@@ -122,7 +124,13 @@ return {
       },
       completion = {
         menu = {
+          winblend = popup_blend,
           winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None",
+        },
+        documentation = {
+          window = {
+            winblend = popup_blend,
+          },
         },
       },
     },

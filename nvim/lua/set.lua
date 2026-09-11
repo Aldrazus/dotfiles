@@ -52,6 +52,13 @@ vim.opt.foldnestmax = 8
 vim.opt.foldcolumn = "0"
 vim.o.winborder = "rounded"
 
+if vim.g.neovide then
+  local popup_blend = 50
+
+  vim.opt.pumblend = popup_blend
+  vim.opt.winblend = popup_blend
+end
+
 if is_windows() then
   vim.o.shell = "pwsh"
   vim.o.shellcmdflag = "-NoLogo -ExecutionPolicy RemoteSigned -Command"
