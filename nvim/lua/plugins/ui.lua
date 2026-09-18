@@ -5,6 +5,7 @@ return {
     priority = 1000,
     opts = {
       flavour = "mocha",
+      term_colors = true
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)

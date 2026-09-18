@@ -8,6 +8,7 @@ return {
     opts = {
       indent = {},
       terminal = {},
+      bigfile = {},
       picker = {
         layout = {
           hidden = { "preview" },
@@ -22,9 +23,9 @@ return {
             box = "vertical",
             title = "{title} {live} {flags}",
             title_pos = "center",
-            { win = "input",   height = 1,          border = "bottom", wo = { winblend = popup_blend } },
+            { win = "input",   height = 1,          border = "bottom",              wo = { winblend = popup_blend } },
             { win = "list",    border = "none",     wo = { winblend = popup_blend } },
-            { win = "preview", title = "{preview}", border = true,     wo = { winblend = popup_blend } },
+            { win = "preview", title = "{preview}", border = true,                  wo = { winblend = popup_blend } },
           }
         },
         sources = {
