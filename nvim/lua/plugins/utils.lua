@@ -12,14 +12,6 @@ return {
     opts = {},
   },
   {
-    "numToStr/Comment.nvim",
-    keys = {
-      { "gc", mode = { "n", "v" } },
-      { "gb", mode = { "n", "v" } },
-    },
-    opts = {},
-  },
-  {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {

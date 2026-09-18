@@ -94,13 +94,12 @@ return {
     },
   },
 
-  { "rafamadriz/friendly-snippets", lazy = true },
-  { "folke/lazydev.nvim",           ft = "lua", opts = {} },
+  { "folke/lazydev.nvim", ft = "lua", opts = {} },
 
   {
     "saghen/blink.cmp",
     version = "v1.10.1",
-    dependencies = { "rafamadriz/friendly-snippets", "folke/lazydev.nvim" },
+    dependencies = { "folke/lazydev.nvim" },
     opts = {
       keymap = {
         preset = "enter",
@@ -113,7 +112,7 @@ return {
         enabled = false,
       },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "lazydev" },
+        default = { "lsp", "path", "buffer", "lazydev" },
         providers = {
           lazydev = {
             name = "LazyDev",

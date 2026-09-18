@@ -42,6 +42,7 @@ vim.opt.cmdheight = 0
 vim.opt.updatetime = 50
 vim.opt.mouse = "a"
 vim.opt.showtabline = 1
+vim.opt.laststatus = 3
 vim.opt.inccommand = "split"
 vim.opt.shortmess:append("c")
 vim.opt.keywordprg = ":help"
@@ -74,6 +75,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 vim.cmd("syntax on")
+
+require("statusline").setup()
 
 -- Set filetype for shaders
 vim.filetype.add({

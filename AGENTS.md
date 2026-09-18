@@ -9,7 +9,7 @@ This repository contains personal dotfiles and application configuration for she
 - Shell configuration lives in `fish/` and `Microsoft.PowerShell_profile.ps1`.
 - Git configuration lives in `.gitconfig`.
 - Tmux configuration lives in `.tmux.conf`.
-- Neovim configuration lives in `nvim/`; plugin specifications are split across `nvim/lua/plugins/`, and filetype/LSP overrides live under `nvim/after/`.
+- Neovim configuration lives in `nvim/`; plugin specifications are split across `nvim/lua/plugins/`, reusable Lua modules live under `nvim/lua/`, and filetype/LSP overrides live under `nvim/after/`.
 - Terminal and editor configuration lives in `ghostty/` and `zed/`.
 - Pi configuration lives in `pi/agent/`, which is symlinked from `~/.pi/agent`. `settings.json` installs `pi-lsp`, `lsp.json` configures language servers, and `extensions/` contains source-controlled extensions.
 - `pi/agent/npm/`, `pi/agent/bin/`, `pi/agent/sessions/`, and `pi/agent/trust/` are local or generated Pi state and must remain untracked.
@@ -18,6 +18,7 @@ This repository contains personal dotfiles and application configuration for she
 
 - Prefer minimal, targeted edits and preserve the style of the surrounding file.
 - Keep Neovim modules small and follow the existing two-space Lua formatting in `.stylua.toml`.
+- Prefer modern native Neovim features over plugins when they provide comparable behavior; keep plugins when they add meaningful workflow improvements.
 - Do not introduce machine-specific absolute paths unless the configuration is intentionally personal and the path is required.
 - Do not hand-edit generated dependency contents or update `nvim/lazy-lock.json` unless the task changes Neovim plugins.
 - Preserve unrelated working-tree changes.
